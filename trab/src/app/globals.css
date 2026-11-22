@@ -33,19 +33,17 @@ body{
 }
 .inputs_login{
   width: 320px;
-  height: 65px;
+  height: 50px;
   margin-bottom: 15px;
   background-color: transparent;
   border: 2px solid black;
   border-radius: 50px;
   font-size: 22px;
   text-align: center;
-  color: black;
   padding: 0 20px;
 }
 .inputs_login::placeholder{
   color: black;
-  opacity: 1;
 }
 .inputs_login:focus{
   border-color: black;
@@ -59,7 +57,39 @@ h3{
 }
 .button_login{
   width: 280px;
-  height: 65px;
+  height: 45px;
+  margin-bottom: 15px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50px;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.button_voltar_login{
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.caminho_cadastro{
+  color: #11b653;
+}
+.bottom_login{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-left: -85px;
+}
+.button_cadastro{
+  width: 280px;
+  height: 75px;
   margin-bottom: 15px;
   background-color: transparent;
   border: 2px solid black;
@@ -70,15 +100,291 @@ h3{
   padding: 0 20px;
   cursor: pointer;
 }
-.button_voltar{
+.button_voltar_cadastro{
   height: 55px;
   width: 55px;
-  border-radius: 50px;
+  border-radius: 50%;
   margin-right: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
-.bottom_login{
+.header{
+  width: 100%;
+  height: 85px;
+  background-color: #216915;
   display: flex;
   align-items: center;
-  align-content: center;
-  margin-left: -85px;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-sizing: border-box;
+  color: black;
+}
+.header h1{
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.15;
+  text-align: center;
+  margin: 0;
+}
+.header_professor{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 1%;
+}
+.header_status{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  font-size: 17px;
+}
+.status_online{
+  text-decoration: underline;
+}
+.picture_professor{
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.header_direita{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header_busca{
+  display: flex;
+  align-items: center;
+  width: 240px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 1000px;
+  padding: 0 14px;
+}
+.header_busca input{
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: black;
+  font-size: 16px;
+}
+.icon_lupa{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid black;
+}
+.button_sair {
+  height: 40px;
+  padding: 0 18px;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 1000px;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+.body_home{
+  width: 100%;
+  margin-top: 20px;
+}
+.table_aluno{
+  width: 100%;
+  border-collapse: collapse;
+  color: black;
+}
+.table_aluno th{
+  padding: 12px 16px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+  border-right: 1px solid #d9d9d9;
+}
+.table_aluno td{
+  padding: 8px 16px;
+  border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+  vertical-align: middle;
+}
+.th_aluno{
+  background-color: #216915;
+  width: 23%;
+}
+.th_presenca{
+  background-color: #3b5998;
+  width: 0%;
+}
+.th_notas{
+  background-color: #d9d9d9;
+  width: 13%;
+}
+.th_frequencia{
+  background-color: #00923a;
+  width: 22%;
+}
+.td_aluno{
+  text-align: left;
+}
+.picture_aluno{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 18px;
+}
+.name_aluno{
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: underline;
+  vertical-align: middle;
+}
+.td_presenca{
+  text-align: center;
+}
+.presenca{
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  height: 34px;
+}
+.text_presenca{
+  padding: 0 10px;
+  font-size: 15px;
+  min-width: 82px;
+  text-align: left;
+}
+.setas_presenca{
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid black;
+  height: 100%;
+  width: 44px;
+}
+.setas_presenca button{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.setas_presenca button:first-child{
+  border-bottom: 2px solid black;
+}
+.icon_seta{
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+.seta_baixo{
+  transform: rotate(180deg);
+}
+.td_notas{
+  text-align: center;
+}
+.notas{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  gap: 8px;
+}
+.button_check{
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  margin-right: auto;
+  padding: 0;
+  cursor: pointer;
+}
+.icon_check{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+.inputs_notas{
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+}
+.input_nota{
+  width: 44px;
+  height: 28px;
+  text-align: center;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.input_nota + .input_nota{
+  border-left: 1px solid black;
+}
+.value_nota{
+  font-size: 18px;
+  margin-left: 55px;
+}
+.button_lapis{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.icon_lapis{
+  width: 18px;
+  height: 18px;
+  margin-right: 30px;
+  object-fit: contain;
+}
+.td_frequencia{
+  text-align: center;
+  font-size: 18px;
+}
+.text_exame{
+  color: #ff0000;
+}
+.notas_cadastro{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 360px;
+  margin-bottom: 15px;
+}
+.input_nota_cadastro{
+  flex: 1;
+  min-width: 0;
+  height: 50px;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.input_nota_cadastro::placeholder{
+  color: black;
 }

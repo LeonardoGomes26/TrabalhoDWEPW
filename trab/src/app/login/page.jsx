@@ -1,11 +1,13 @@
 'use client'
+import { loginProfessor } from "@/lib/db";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Login(){
   const [cpf, setCpf] = useState('')
   const [senha, setSenha] = useState('')
-  const [usuarioSalvo, setUsuarioSalvo] = useState('')
+  const router = useRouter()
 
   const texto = 'Sistema de Notas'
   const letras = texto.split('')
@@ -32,10 +34,33 @@ export default function Login(){
     return centro
   })
 
+  const voltarParaHomeNav = () => {
+      window.location.href = 'https://www.google.com'
+  }
+
+  function formatarCPF(val){
+    return val.replace(/\D/g, '').slice(0,11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+  }
+
+  async function EnviarDados(e){
+    e.preventDefault()
+
+    const resposta = await loginProfessor({cpf, senha})
+    if(resposta?.error){
+      alert(resposta.error)
+      return;
+    }
+
+    localStorage.setItem('usuario', JSON.stringify(resposta))
+    setCpf('')
+    setSenha('')
+    router.push('/')
+  }
+
   useEffect(() => {
-    const carregar = localStorage.getItem('usuario')
-    if(carregar)
-        setUsuarioSalvo(carregar)
+    localStorage.removeItem('usuario')
+    setCpf('')
+    setSenha('')
   }, [])
 
   return (
@@ -45,15 +70,18 @@ export default function Login(){
           <span key={i} style={{transform: `translateX(-50%) rotate(${angulos[i]}deg)`}}>{letra === ' ' ? '\u00A0' : letra}</span>
         ))}
       </div>
-      <div className="itens_centro">
-        <input type="text" value={cpf} placeholder="CPF" onChange={(e) => setCpf(e.target.value)} className="inputs_login input_nome_login" autoFocus/>
-        <input type="password" value={senha} placeholder="Senha" onChange={(e) => setSenha(e.target.value)} className="inputs_login"/>
-        <h3>Esqueceu a sua senha?</h3>
+
+      <form onSubmit={EnviarDados} className="itens_centro">
+        <input type="text" value={cpf} placeholder="CPF" onChange={(e) => setCpf(formatarCPF(e.target.value))} maxLength={14} minLength={14} className="inputs_login input_nome_login" autoFocus required/>
+        <input type="password" value={senha} placeholder="Senha" onChange={(e) => setSenha(e.target.value)} className="inputs_login" required/>
+        <button type="submit" className="button_login"><strong>Entrar</strong></button>
+        <Link href='/cadastro-profs' className='caminho_cadastro'><h3>Não está cadastrado? Cadastre-se aqui!</h3></Link>
+
         <div className="bottom_login">
-          <Link href='/' title="Voltar"><img src="/volte.png" alt="Voltar" className="button_voltar"/></Link>
-          <button className="button_login">Redefinir senha</button>
+          <button className="button_voltar_login" type="button" title="Sair do Site" onClick={voltarParaHomeNav}><img src="/volte.png" alt="Sair do Site" className="button_voltar_login"/></button>
+          <button type="button" onClick={() => router.push('/redefinir-senha')} className="button_login">Redefinir Senha</button>
         </div>
-      </div>
+      </form> 
     </div>
   );
 }
